@@ -15,5 +15,8 @@ export const env = {
     'mongodb://127.0.0.1:27017/ganesh-jewellers',
   jwtSecret: process.env.JWT_SECRET || 'change-me',
   jwtExpire: process.env.JWT_EXPIRE || '7d',
+  adminEmail: process.env.ADMIN_EMAIL || 'admin@ganeshjewellers.local',
+  adminPassword: process.env.ADMIN_PASSWORD || 'Admin@123',
+  adminName: process.env.ADMIN_NAME || 'Ganesh Admin',
   frontendDistPath: path.resolve(__dirname, '../../../frontend/dist'),
 };

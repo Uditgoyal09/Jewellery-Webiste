@@ -7,6 +7,7 @@ const contactQuerySchema = new mongoose.Schema(
     phone: { type: String, default: null },
     subject: { type: String, default: null },
     message: { type: String, required: true, trim: true },
+    status: { type: String, enum: ['new', 'in_progress', 'resolved'], default: 'new' },
   },
   { timestamps: { createdAt: 'createdAt', updatedAt: false } },
 );

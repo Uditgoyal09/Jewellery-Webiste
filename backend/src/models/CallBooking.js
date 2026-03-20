@@ -9,7 +9,7 @@ const callBookingSchema = new mongoose.Schema(
     preferredDate: { type: String, default: null },
     preferredTime: { type: String, default: null },
     message: { type: String, default: null },
-    status: { type: String, default: 'pending' },
+    status: { type: String, enum: ['pending', 'confirmed', 'completed'], default: 'pending' },
   },
   { timestamps: { createdAt: 'createdAt', updatedAt: false } },
 );

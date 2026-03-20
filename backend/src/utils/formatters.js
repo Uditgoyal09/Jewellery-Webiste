@@ -3,6 +3,7 @@ export const formatUser = (user) => ({
   fullName: user.fullName,
   email: user.email,
   phone: user.phone,
+  role: user.role || 'customer',
 });
 
 export const formatCategory = (category) => ({

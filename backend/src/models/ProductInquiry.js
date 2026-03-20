@@ -9,7 +9,7 @@ const productInquirySchema = new mongoose.Schema(
     phone: { type: String, default: null },
     inquiryType: { type: String, enum: ['buy', 'custom'], required: true },
     message: { type: String, required: true, trim: true },
-    status: { type: String, default: 'pending' },
+    status: { type: String, enum: ['pending', 'contacted', 'closed'], default: 'pending' },
   },
   { timestamps: { createdAt: 'createdAt', updatedAt: false } },
 );
