@@ -18,5 +18,11 @@ export const env = {
   adminEmail: process.env.ADMIN_EMAIL || 'admin@ganeshjewellers.local',
   adminPassword: process.env.ADMIN_PASSWORD || 'Admin@123',
   adminName: process.env.ADMIN_NAME || 'Ganesh Admin',
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
+  corsOrigins: (process.env.CORS_ORIGINS || process.env.FRONTEND_URL || 'http://localhost:5173')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+  allowVercelPreviews: process.env.ALLOW_VERCEL_PREVIEWS === 'true',
   frontendDistPath: path.resolve(__dirname, '../../../frontend/dist'),
 };

@@ -6,6 +6,28 @@ import { env } from './config/env.js';
 
 export const createApp = () => {
   const app = express();
+  const allowedOrigins = new Set(env.corsOrigins);
+
+  app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    const isVercelPreview = Boolean(origin && env.allowVercelPreviews && /\.vercel\.app$/i.test(origin));
+
+    if (!origin || allowedOrigins.has(origin) || isVercelPreview) {
+      if (origin) {
+        res.header('Access-Control-Allow-Origin', origin);
+      }
+      res.header('Vary', 'Origin');
+      res.header('Access-Control-Allow-Credentials', 'true');
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+    }
+
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(204);
+    }
+
+    next();
+  });
 
   app.use(express.json());
 
